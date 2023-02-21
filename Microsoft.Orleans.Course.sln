@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DBB864C7-1212-4EC0-86BE-92B2756E54EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Orleans.Course.Grains", "src\Microsoft.Orleans.Course.Grains\Microsoft.Orleans.Course.Grains.csproj", "{CA386F93-3887-485D-97EE-35F72E18AC6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Orleans.Course.Grains.Interfaces", "src\Microsoft.Orleans.Course.Grains.Interfaces\Microsoft.Orleans.Course.Grains.Interfaces.csproj", "{3A8E3C73-A5AB-4EEE-9702-26849EA4C8AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Orleans.Course.Silo", "src\Microsoft.Orleans.Course.Silo\Microsoft.Orleans.Course.Silo.csproj", "{FB24DCA4-FCBB-4B9B-BE8A-B32FC18740FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Orleans.Host", "src\Microsoft.Orleans.Host\Microsoft.Orleans.Host.csproj", "{CFCFD30E-38A8-4153-82CF-8FE4744B7990}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Orleans.Course.Client", "src\Microsoft.Orleans.Course.Client\Microsoft.Orleans.Course.Client.csproj", "{D512AC7C-22E9-44FD-B913-000CC5086109}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{184C36DE-4CF5-412B-B00E-19BC14C276A2}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA386F93-3887-485D-97EE-35F72E18AC6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA386F93-3887-485D-97EE-35F72E18AC6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA386F93-3887-485D-97EE-35F72E18AC6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA386F93-3887-485D-97EE-35F72E18AC6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A8E3C73-A5AB-4EEE-9702-26849EA4C8AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A8E3C73-A5AB-4EEE-9702-26849EA4C8AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A8E3C73-A5AB-4EEE-9702-26849EA4C8AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A8E3C73-A5AB-4EEE-9702-26849EA4C8AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB24DCA4-FCBB-4B9B-BE8A-B32FC18740FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB24DCA4-FCBB-4B9B-BE8A-B32FC18740FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB24DCA4-FCBB-4B9B-BE8A-B32FC18740FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB24DCA4-FCBB-4B9B-BE8A-B32FC18740FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFCFD30E-38A8-4153-82CF-8FE4744B7990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFCFD30E-38A8-4153-82CF-8FE4744B7990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFCFD30E-38A8-4153-82CF-8FE4744B7990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFCFD30E-38A8-4153-82CF-8FE4744B7990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D512AC7C-22E9-44FD-B913-000CC5086109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D512AC7C-22E9-44FD-B913-000CC5086109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D512AC7C-22E9-44FD-B913-000CC5086109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D512AC7C-22E9-44FD-B913-000CC5086109}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CA386F93-3887-485D-97EE-35F72E18AC6B} = {DBB864C7-1212-4EC0-86BE-92B2756E54EA}
+		{3A8E3C73-A5AB-4EEE-9702-26849EA4C8AA} = {DBB864C7-1212-4EC0-86BE-92B2756E54EA}
+		{FB24DCA4-FCBB-4B9B-BE8A-B32FC18740FA} = {DBB864C7-1212-4EC0-86BE-92B2756E54EA}
+		{CFCFD30E-38A8-4153-82CF-8FE4744B7990} = {DBB864C7-1212-4EC0-86BE-92B2756E54EA}
+		{D512AC7C-22E9-44FD-B913-000CC5086109} = {DBB864C7-1212-4EC0-86BE-92B2756E54EA}
+	EndGlobalSection
+EndGlobal
