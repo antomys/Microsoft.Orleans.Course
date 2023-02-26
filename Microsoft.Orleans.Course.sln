@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Orleans.Course.Gr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Orleans.Course.Grains.Interfaces", "src\Microsoft.Orleans.Course.Grains.Interfaces\Microsoft.Orleans.Course.Grains.Interfaces.csproj", "{3A8E3C73-A5AB-4EEE-9702-26849EA4C8AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Orleans.Course.Host", "src\Microsoft.Orleans.Course.Host\Microsoft.Orleans.Course.Host.csproj", "{CFCFD30E-38A8-4153-82CF-8FE4744B7990}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Orleans.Course.SiloHost", "src\Microsoft.Orleans.Course.SiloHost\Microsoft.Orleans.Course.SiloHost.csproj", "{CFCFD30E-38A8-4153-82CF-8FE4744B7990}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{184C36DE-4CF5-412B-B00E-19BC14C276A2}"
 	ProjectSection(SolutionItems) = preProject
