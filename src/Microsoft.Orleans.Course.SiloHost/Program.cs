@@ -16,11 +16,14 @@ builder.Host
                 options.ClusterId = "Dev";
                 options.ServiceId = "Course.Orleans";
             })
+            .UseDashboard(options => options.HostSelf = true)
             .UseLocalhostClustering()
             .ConfigureLogging(logging => logging.AddConsole())
             .AddPersistence(builder.Configuration);
     }); 
     
 var app = builder.Build();
+
+app.Map("/dashboard", applicationBuilder => applicationBuilder.UseOrleansDashboard());
 
 app.Run();

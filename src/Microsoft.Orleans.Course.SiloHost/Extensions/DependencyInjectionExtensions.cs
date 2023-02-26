@@ -17,6 +17,8 @@ public static class DependencyInjectionExtensions
             || persistenceOptions.IsEnabled is false
             || persistenceOptions.Type is null)
         {
+            builder.AddInMemoryPersistence();
+            
             return builder;
         }
 
@@ -39,18 +41,12 @@ public static class DependencyInjectionExtensions
             case PersistenceType.Redis:
                 builder.AddRedisPersistence(options);
                 break;
-            case PersistenceType.InMemory:
-                builder.AddInMemoryPersistence();
-                break;
             case PersistenceType.MySql:
                 builder.AddMySqlPersistence(options);
                 break;
-            case PersistenceType.None:
-                break;
-            case null:
-                break;
             default:
-                throw new ArgumentOutOfRangeException();
+                builder.AddInMemoryPersistence();
+                break;
         }
     }
 
