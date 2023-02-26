@@ -2,6 +2,7 @@
 using Microsoft.Orleans.Course.Grains.Extensions;
 using Microsoft.Orleans.Course.Grains.Interfaces;
 using Orleans.Providers;
+using Orleans.Runtime;
 
 namespace Microsoft.Orleans.Course.Grains.Grains;
 
@@ -23,6 +24,8 @@ internal sealed class Hello : Grain<HelloArchive>, IHello
         _logger.LogSay(greeting);
 
         var key = this.GetPrimaryKeyString();
+        var traceId = RequestContext.Get("traceId").ToString();
+        _logger.LogTracing(traceId!, key);
 
         return $"Client with key {key} said {greeting}";
     }

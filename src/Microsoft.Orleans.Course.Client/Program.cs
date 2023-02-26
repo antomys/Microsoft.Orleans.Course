@@ -87,8 +87,9 @@ static async Task DoClientWorkAsync(
     IGrainFactory client,
     string greeting)
 {
+    RequestContext.Set("traceId", Guid.NewGuid().ToString());
     var friend = client.GetGrain<IHello>(Guid.NewGuid());
     var response = await friend.SayHello(greeting);
-
+ 
     Console.WriteLine($"\n\n{response}\n\n");
 }
