@@ -10,4 +10,8 @@
       <PackageReference Include="Microsoft.Orleans.Sdk" Version="7.1.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Microsoft.Orleans.Course.Grains.Interfaces\Microsoft.Orleans.Course.Grains.Interfaces.csproj" />
+    </ItemGroup>
+
 </Project>
