@@ -9,4 +9,14 @@ internal static partial class LoggingExtensions
         this ILogger logger,
         string interfaceTypeValue,
         string contextMethodName);
+    
+    [LoggerMessage(
+        Level = LogLevel.Error,
+        Message = "Error occured during invoking interface {InterfaceTypeValue} with method {ContextMethodName} and response {Response}")]
+    public static partial void LogException(
+        this ILogger logger,
+        Exception exception,
+        string interfaceTypeValue,
+        string contextMethodName,
+        string response);
 }

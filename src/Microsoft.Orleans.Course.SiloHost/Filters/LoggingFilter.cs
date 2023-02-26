@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Microsoft.Orleans.Course.Grains.Interfaces;
 using Microsoft.Orleans.Course.SiloHost.Extensions;
 using Orleans.Runtime;
@@ -18,13 +19,26 @@ internal sealed class LoggingFilter : IIncomingGrainCallFilter
         _logger = logger;
     }
 
-    public Task Invoke(IIncomingGrainCallContext context)
+    public async Task Invoke(IIncomingGrainCallContext context)
     {
-        if (LoggingTypes.Contains(context.InterfaceType))
+        try
         {
-            _logger.LogFilter(context.InterfaceType.ToString()!, context.MethodName);
-        }
+            if (LoggingTypes.Contains(context.InterfaceType))
+            {
+                _logger.LogFilter(context.InterfaceType.ToString()!, context.MethodName);
+            }
 
-        return context.Invoke();
+            await context.Invoke();
+        }
+        catch (Exception exception)
+        {
+            using var request = await context.Request.Invoke();
+            
+            _logger.LogException(
+                exception,
+                context.InterfaceType.ToString()!,
+                context.MethodName, 
+                JsonSerializer.Serialize(request.Result));
+        }
     }
 }
