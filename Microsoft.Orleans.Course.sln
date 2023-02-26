@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Orleans.Course.Client", "src\Microsoft.Orleans.Course.Client\Microsoft.Orleans.Course.Client.csproj", "{CC7DFD1C-863A-4926-9A9F-C0BABA38765D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Orleans.Course.Db.Migration", "src\Microsoft.Orleans.Course.Db.Migration\Microsoft.Orleans.Course.Db.Migration.csproj", "{9F893809-9758-4488-B099-8FA174FEB8CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,11 +40,16 @@ Global
 		{CC7DFD1C-863A-4926-9A9F-C0BABA38765D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC7DFD1C-863A-4926-9A9F-C0BABA38765D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC7DFD1C-863A-4926-9A9F-C0BABA38765D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F893809-9758-4488-B099-8FA174FEB8CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F893809-9758-4488-B099-8FA174FEB8CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F893809-9758-4488-B099-8FA174FEB8CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F893809-9758-4488-B099-8FA174FEB8CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CA386F93-3887-485D-97EE-35F72E18AC6B} = {DBB864C7-1212-4EC0-86BE-92B2756E54EA}
 		{3A8E3C73-A5AB-4EEE-9702-26849EA4C8AA} = {DBB864C7-1212-4EC0-86BE-92B2756E54EA}
 		{CFCFD30E-38A8-4153-82CF-8FE4744B7990} = {DBB864C7-1212-4EC0-86BE-92B2756E54EA}
 		{CC7DFD1C-863A-4926-9A9F-C0BABA38765D} = {DBB864C7-1212-4EC0-86BE-92B2756E54EA}
+		{9F893809-9758-4488-B099-8FA174FEB8CC} = {DBB864C7-1212-4EC0-86BE-92B2756E54EA}
 	EndGlobalSection
 EndGlobal
