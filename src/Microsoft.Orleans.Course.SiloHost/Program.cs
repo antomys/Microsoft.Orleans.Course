@@ -1,4 +1,5 @@
 using Microsoft.Orleans.Course.SiloHost.Extensions;
+using Microsoft.Orleans.Course.SiloHost.Filters;
 using Microsoft.Orleans.Course.SiloHost.Options;
 using Orleans.Configuration;
 
@@ -18,6 +19,7 @@ builder.Host
             })
             .UseDashboard(options => options.HostSelf = true)
             .UseLocalhostClustering()
+            .AddIncomingGrainCallFilter<LoggingFilter>()
             .ConfigureLogging(logging => logging.AddConsole())
             .AddPersistence(builder.Configuration);
     }); 
