@@ -1,10 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Orleans.Course.Grains.Extensions;
 using Microsoft.Orleans.Course.Grains.Interfaces;
+using Orleans.Providers;
 
 namespace Microsoft.Orleans.Course.Grains.Grains;
 
-public sealed class Hello : Grain, IHello
+[StorageProvider]
+internal sealed class Hello : Grain<HelloArchive>, IHello
 {
     private readonly ILogger<Hello> _logger;
 
@@ -13,10 +15,15 @@ public sealed class Hello : Grain, IHello
         _logger = logger;
     }
 
-    public ValueTask<string> SayHello(string greeting)
+    public async ValueTask<string> SayHello(string greeting)
     {
+        State.Greetings.Add(greeting);
+
+        await WriteStateAsync();
         _logger.LogSay(greeting);
 
-        return ValueTask.FromResult($"Client {IdentityString} said {greeting}");
+        var key = this.GetPrimaryKeyString();
+
+        return $"Client with key {key} said {greeting}";
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Orleans.Course.Grains.Interfaces;
+using Orleans.Configuration;
 using Orleans.Networking.Shared;
 using Orleans.Runtime;
 using Orleans.Runtime.Messaging;
@@ -14,12 +15,15 @@ try
     using var host = await StartClientAsync();
 
     var client = host.Services.GetRequiredService<IClusterClient>();
-
-    var input = Console.ReadLine();
-        
-    await DoClientWorkAsync(client, input!);
     
-    Console.ReadKey();
+    while (Console.ReadKey().Key != ConsoleKey.C)
+    {
+        var input = Console.ReadLine();
+    
+        await DoClientWorkAsync(client, input!);
+    
+        Console.ReadKey();
+    }
 
     await host.StopAsync();
 
@@ -28,7 +32,7 @@ try
 catch (Exception e)
 {
     Console.WriteLine($$"""
-        Exception while trying to run client: {{e.Message}}
+        Exception while trying to run client: {{e}}
         Make sure the silo the client is trying to connect to is running.
         Press any key to exit.
         """);
@@ -41,12 +45,18 @@ static async Task<IHost> StartClientAsync()
 {
     var policy = BuildPolicy();
 
-    await policy.ExecuteAsync(async () =>
+    var host = await policy.ExecuteAsync(async () =>
     {
         var builder = new HostBuilder()
             .UseOrleansClient(client =>
             {
-                client.UseLocalhostClustering();
+                client          
+                    .Configure<ClusterOptions>(options => 
+                    {
+                        options.ClusterId = "Dev";
+                        options.ServiceId = "Course.Orleans";
+                    })
+                    .UseLocalhostClustering();
             })
             .ConfigureLogging(logging => logging.AddConsole());
 
@@ -58,7 +68,7 @@ static async Task<IHost> StartClientAsync()
         return host;
     });
 
-    throw new ConnectionFailedException();
+    return host;
 }
 
 static AsyncRetryPolicy<IHost> BuildPolicy()
