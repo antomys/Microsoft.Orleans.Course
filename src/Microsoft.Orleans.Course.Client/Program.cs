@@ -2,6 +2,12 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Orleans.Course.Grains.Interfaces;
+using Orleans.Networking.Shared;
+using Orleans.Runtime;
+using Orleans.Runtime.Messaging;
+using Polly;
+using Polly.Contrib.WaitAndRetry;
+using Polly.Retry;
 
 try
 {
@@ -33,19 +39,38 @@ catch (Exception e)
 
 static async Task<IHost> StartClientAsync()
 {
-    var builder = new HostBuilder()
-        .UseOrleansClient(client =>
-        {
-            client.UseLocalhostClustering();
-        })
-        .ConfigureLogging(logging => logging.AddConsole());
+    var policy = BuildPolicy();
 
-    var host = builder.Build();
-    await host.StartAsync();
+    await policy.ExecuteAsync(async () =>
+    {
+        var builder = new HostBuilder()
+            .UseOrleansClient(client =>
+            {
+                client.UseLocalhostClustering();
+            })
+            .ConfigureLogging(logging => logging.AddConsole());
 
-    Console.WriteLine("Client successfully connected to silo host \n");
+        var host = builder.Build();
+        await host.StartAsync();
 
-    return host;
+        Console.WriteLine("Client successfully connected to silo host \n");
+
+        return host;
+    });
+
+    throw new ConnectionFailedException();
+}
+
+static AsyncRetryPolicy<IHost> BuildPolicy()
+{
+    var delay = Backoff.DecorrelatedJitterBackoffV2(medianFirstRetryDelay: TimeSpan.FromSeconds(1), retryCount: 5);
+   
+    return Policy<IHost>
+        .Handle<SiloUnavailableException>()
+        .Or<OrleansMessageRejectionException>()
+        .Or<SocketConnectionException>()
+        .Or<ConnectionFailedException>()
+        .WaitAndRetryAsync(delay);
 }
 
 static async Task DoClientWorkAsync(
