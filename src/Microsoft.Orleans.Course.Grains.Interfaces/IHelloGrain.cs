@@ -1,6 +1,6 @@
 namespace Microsoft.Orleans.Course.Grains.Interfaces;
 
-public interface IHello : IGrainWithGuidKey
+public interface IHelloGrain : IGrainWithGuidKey
 {
     ValueTask<string> SayHello(string greeting);
 }

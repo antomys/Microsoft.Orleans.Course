@@ -88,8 +88,13 @@ static async Task DoClientWorkAsync(
     string greeting)
 {
     RequestContext.Set("traceId", Guid.NewGuid().ToString());
-    var friend = client.GetGrain<IHello>(Guid.NewGuid());
-    var response = await friend.SayHello(greeting);
- 
-    Console.WriteLine($"\n\n{response}\n\n");
+    var greetingGrain = client.GetGrain<IGreetingGrain>(0);
+    var helloGrain = client.GetGrain<IHelloGrain>(Guid.NewGuid());
+    
+    var response = await helloGrain.SayHello(greeting);
+    var response2 = await greetingGrain.Send(greeting);
+
+    Console.WriteLine($"Hello grain: \n\n{response}\n\n");
+    
+    Console.WriteLine($"Greeting grain: \n\n{response2}\n\n");
 }

@@ -9,7 +9,7 @@ internal sealed class LoggingFilter : IIncomingGrainCallFilter
 {
     private static readonly GrainInterfaceType[] LoggingTypes = 
     {
-        GrainInterfaceType.Create(typeof(IHello).FullName!),
+        GrainInterfaceType.Create(typeof(IHelloGrain).FullName!),
     };
 
     private readonly ILogger<LoggingFilter> _logger;

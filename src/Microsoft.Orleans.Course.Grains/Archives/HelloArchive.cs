@@ -1,4 +1,4 @@
-namespace Microsoft.Orleans.Course.Grains.Grains;
+namespace Microsoft.Orleans.Course.Grains.Archives;
 
 internal sealed class HelloArchive
 {

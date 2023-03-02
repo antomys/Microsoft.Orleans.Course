@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Orleans.Course.Grains.Archives;
 using Microsoft.Orleans.Course.Grains.Extensions;
 using Microsoft.Orleans.Course.Grains.Interfaces;
 using Orleans.Providers;
@@ -7,11 +8,11 @@ using Orleans.Runtime;
 namespace Microsoft.Orleans.Course.Grains.Grains;
 
 [StorageProvider]
-internal sealed class Hello : Grain<HelloArchive>, IHello
+internal sealed class HelloGrainGrain : Grain<HelloArchive>, IHelloGrain
 {
-    private readonly ILogger<Hello> _logger;
+    private readonly ILogger<HelloGrainGrain> _logger;
 
-    public Hello(ILogger<Hello> logger)
+    public HelloGrainGrain(ILogger<HelloGrainGrain> logger)
     {
         _logger = logger;
     }
